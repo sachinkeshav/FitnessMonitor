@@ -1,9 +1,6 @@
-package org.mustard.fitnessmonitor;
+package org.mustard.fitnessmonitor.servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,16 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class TestServlet
+ * Servlet implementation class AddActivity
  */
-@WebServlet("/NewActivity")
-public class NewActivity extends HttpServlet {
+@WebServlet("/AddActivity")
+public class AddActivity extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Default constructor.
+	 * @see HttpServlet#HttpServlet()
 	 */
-	public NewActivity() {
+	public AddActivity() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -28,24 +26,26 @@ public class NewActivity extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<String> activityList = new ArrayList<String>();
-		activityList.add("Walking");
-		activityList.add("Running");
-		activityList.add("Cycling");
-		activityList.add("Swimming");
-		activityList.add("Yoga/Aerobics");
-		request.setAttribute("activityList", activityList);
-		getServletContext().getRequestDispatcher("/jsp/newActivity.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String activity = request.getParameter("newActivity");
+		String level = request.getParameter("level");
+		String measType = request.getParameter("measType");
+		String specifiedMiles = request.getParameter("specifiedMiles");
+		String specifiedTime = request.getParameter("specifiedTime");
+		System.out.println(activity);
+		System.out.println(level);
+		System.out.println(measType);
+		System.out.println(specifiedTime);
+		System.out.println(specifiedMiles);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub

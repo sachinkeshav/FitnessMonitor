@@ -14,49 +14,51 @@
 <title>Add New Activity</title>
 </head>
 <body>
-	<div class="outer">
-		<div class="middle">
-			<div class="inner">
-				<div>
-					<h1>+ Add new activity</h1>
-				</div>
-				<div id="newActivityList" class="new-activity">
-					+ Activity: <select name="newActivity" id="newActivity">
-						<c:forEach items="${activityList}" var="activities"
-							varStatus="act">
-							<option>${activities}</option>
-						</c:forEach>
-					</select>
-				</div>
-				<div id="level" class="level">
-					+ Difficulty Level: <input type="radio" name="level" value="low"
-						checked> Low <input type="radio" name="level"
-						value="medium"> Medium <input type="radio" name="level"
-						value="high"> High
-				</div>
-				<div class="measurement-type">
-					<label for="type">+ Choose type: </label> <select name="measType"
-						id="measType">
-						<option>Choose type</option>
-						<option value="distance">Distance</option>
-						<option value="time">Time</option>
-					</select>
-					<div id="exerciceTypeDistance" class="sub-measurement-type"
-						style="display: none;">
-						<label for="specify">+ Miles: </label> <input type="text"
-							name="specify" placeholder="Specify miles" />
+	<form action="addActivity" method="POST">
+		<div class="outer">
+			<div class="middle">
+				<div class="inner">
+					<div>
+						<h1>+ Add new activity</h1>
 					</div>
-					<div id="exerciceTypeTime" class="sub-measurement-type"
-						style="display: none;">
-						<label for="specify">+ Time : </label> <input type="text"
-							name="specify" placeholder="Specify time" />
+					<div id="newActivityList" class="new-activity">
+						+ Activity: <select name="newActivity" id="newActivity">
+							<c:forEach items="${activityList}" var="activities"
+								varStatus="act">
+								<option>${activities}</option>
+							</c:forEach>
+						</select>
 					</div>
+					<div id="level" class="level">
+						+ Difficulty Level: <input type="radio" name="level" value="low"
+							checked> Low <input type="radio" name="level"
+							value="medium"> Medium <input type="radio" name="level"
+							value="high"> High
+					</div>
+					<div class="measurement-type">
+						<label for="type">+ Choose type: </label> <select name="measType"
+							id="measType">
+							<option>Choose type</option>
+							<option value="distance">Distance</option>
+							<option value="time">Time</option>
+						</select>
+						<div id="exerciceTypeDistance" class="sub-measurement-type"
+							style="display: none;">
+							<label for="specify">+ Miles: </label> <input type="text"
+								name="specifiedMiles" placeholder="Specify miles" />
+						</div>
+						<div id="exerciceTypeTime" class="sub-measurement-type"
+							style="display: none;">
+							<label for="specify">+ Time : </label> <input type="text"
+								name="specifiedTime" placeholder="Specify time" />
+						</div>
+					</div>
+					<input class="submitButton" type="submit" value="Submit"> <input
+						id="cancel" class="submitButton" type="button" value="Cancel">
 				</div>
-				<input class="submitButton" type="submit" value="Submit"> <input
-					id="cancel" class="submitButton" type="submit" value="Cancel">
 			</div>
 		</div>
-	</div>
+	</form>
 </body>
 <script type="text/javascript">
 	$('#measType').change(function() {
