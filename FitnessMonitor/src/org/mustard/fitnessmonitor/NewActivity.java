@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class TestServlet
  */
-@WebServlet("/TestServlet")
+@WebServlet("/NewActivity")
 public class NewActivity extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,7 +31,6 @@ public class NewActivity extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String a = "abc";
 		List<String> activityList = new ArrayList<String>();
 		activityList.add("Walking");
 		activityList.add("Running");
@@ -39,9 +38,7 @@ public class NewActivity extends HttpServlet {
 		activityList.add("Swimming");
 		activityList.add("Yoga/Aerobics");
 		request.setAttribute("activityList", activityList);
-		request.setAttribute("abc", a);
-		getServletContext().getRequestDispatcher("jsp/newActivity.jsp").forward(request, response);
-
+		getServletContext().getRequestDispatcher("/jsp/newActivity.jsp").forward(request, response);
 	}
 
 	/**

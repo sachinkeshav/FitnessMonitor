@@ -28,3 +28,25 @@ body {
 	margin-right: auto;
 	width: 500px;
 }
+
+.new-activity {
+	margin-bottom: 20px;
+}
+
+.level {
+	margin-bottom: 20px;
+}
+
+.measurement-type {
+	margin-botton: 20px;
+}
+
+.sub-measurement-type {
+	margin: 13px 4px 10px 21px;
+}
+
+.submitButton {
+	height: 26px;
+	margin-top: 16px;
+	width: 62px;
+}
