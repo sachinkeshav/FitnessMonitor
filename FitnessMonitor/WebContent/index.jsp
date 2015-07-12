@@ -18,7 +18,7 @@
 				</div>
 				<div>
 					<a id="activity"
-						href="${pageContext.request.contextPath}/newAcitivity">+ Add
+						href="${pageContext.request.contextPath}/newActivity">+ Add
 						activity</a> <br> <a id="activity"
 						href="${pageContext.request.contextPath}/showHistory">+ Show
 						History</a>

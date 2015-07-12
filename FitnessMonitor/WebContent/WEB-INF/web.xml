@@ -13,7 +13,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>NewActivity</servlet-name>
-		<url-pattern>/newAcitivity</url-pattern>
+		<url-pattern>/newActivity</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
