@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link REL="stylesheet" href="${pageContext.request.contextPath}/css/custom.css" type="text/css">
 <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
 <script src="http://code.highcharts.com/highcharts.js" type="text/javascript"></script>
 <script src="http://code.highcharts.com/modules/exporting.js" type="text/javascript"></script>
@@ -55,9 +56,16 @@
     });
 });
 </script>
-<title>Progress Report</title>
+<title>Fitness Monitor System</title>
 </head>
 <body>
-	<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+	<div class="outer">
+		<div class="middle">
+			<div>
+				<h1>Progress Report</h1>
+			</div>
+			<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+		</div>
+	</div>
 </body>
 </html>
