@@ -1,12 +1,12 @@
 package org.mustard.fitnessmonitor.models;
 
-public class Running extends Physical {
-	public Running() {
+public class TreadMill extends Physical {
+	public TreadMill() {
 	}
 
 	@Override
 	public ActivityType activityType() {
-		return ActivityType.RUNNING;
+		return ActivityType.TREADMILL;
 	}
 
 	@Override

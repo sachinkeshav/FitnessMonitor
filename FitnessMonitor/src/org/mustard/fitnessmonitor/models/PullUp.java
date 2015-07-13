@@ -1,22 +1,29 @@
 package org.mustard.fitnessmonitor.models;
 
-public class Swimming extends Physical {
+public class PullUp extends Physical {
 
-	public Swimming() {
+	int repetition;
+
+	public int getRepetition() {
+		return repetition;
+	}
+
+	public void setRepetition(int repetition) {
+		this.repetition = repetition;
+	}
+
+	public PullUp() {
 	}
 
 	@Override
 	public ActivityType activityType() {
-		return ActivityType.SWIMMING;
+		return ActivityType.PULLUP;
 	}
 
 	@Override
 	public double calculateCalories() {
-		if(super.getTime()==0){
-			return super.calculateCalories()*0.72;
-		}
-		return super.weight * 0.57 * super.getTime();
-		
+		return super.weight * 0.57*this.repetition;
+
 	}
 
 }

@@ -1,8 +1,8 @@
 package org.mustard.fitnessmonitor.models;
 
-public class Yoga extends Physical {
+public class BenchPress extends Physical {
 
-	public Yoga() {
+	public BenchPress() {
 	}
 
 	@Override
@@ -12,6 +12,6 @@ public class Yoga extends Physical {
 
 	@Override
 	public double calculateCalories() {
-		return super.weight * super.getLevel() / 2 * 0.7 * super.getTime();
+		return super.weight * super.getRepetition() / super.getBenchPressWeight() * 0.7;
 	}
 }
