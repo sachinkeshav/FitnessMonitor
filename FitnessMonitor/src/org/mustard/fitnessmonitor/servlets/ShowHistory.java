@@ -2,6 +2,7 @@ package org.mustard.fitnessmonitor.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -38,11 +39,20 @@ public class ShowHistory extends HttpServlet {
 		// response.getWriter().append("Served at:
 		// ").append(request.getContextPath());
 		JdbcMainTest test = new JdbcMainTest();
+		Map<String, List<Object>> result = null;
 		try {
-			Map<String, Map<String, Double>> result = test.fetchData();
+			result = test.fetchData();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		request.setAttribute("weight", result.get("weight"));
+		request.setAttribute("running", result.get("running"));
+		request.setAttribute("walking", result.get("walking"));
+		request.setAttribute("swimming", result.get("swimming"));
+		request.setAttribute("cycling", result.get("cycling"));
+		request.setAttribute("aerobics", result.get("aerobics"));
+		request.setAttribute("total", result.get("total"));
+		request.setAttribute("date", result.get("date"));
 		request.getRequestDispatcher("/jsp/history.jsp").forward(request, response);
 	}
 

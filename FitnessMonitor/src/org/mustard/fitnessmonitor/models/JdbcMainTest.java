@@ -5,7 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class JdbcMainTest {
@@ -49,27 +51,43 @@ public class JdbcMainTest {
 		}
 	}
 
-	public Map<String, Map<String, Double>> fetchData() throws SQLException {
+	public Map<String, List<Object>> fetchData() throws SQLException {
 		String sql = "SELECT activity_date, weight, running_cal, swimming_cal, walking_cal, cycling_cal, aerobics_cal, total_cal FROM tbl_activity";
 		ResultSet resultSet = statement.executeQuery(sql);
 
-		Map<String, Map<String, Double>> resultMap = new HashMap<>();
+		Map<String, List<Object>> resultMap = new HashMap<>();
 
 		while (resultSet.next()) {
-			String dateTime = "" + resultSet.getDate("activity_date");
-			if (!resultMap.containsKey(dateTime)) {
-				Map<String, Double> activityMap = new HashMap<>();
-				activityMap.put("weight", resultSet.getDouble("weight"));
-				activityMap.put("running", resultSet.getDouble("running_cal"));
-				activityMap.put("swimming", resultSet.getDouble("swimming_cal"));
-				activityMap.put("walking", resultSet.getDouble("walking_cal"));
-				activityMap.put("cycling", resultSet.getDouble("cycling_cal"));
-				activityMap.put("aerobics", resultSet.getDouble("aerobics_cal"));
-				activityMap.put("total", resultSet.getDouble("total_cal"));
-				resultMap.put(dateTime, activityMap);
-			}
+			String date = "" + resultSet.getDate("activity_date");
+			double weight = resultSet.getDouble("weight");
+			double running = resultSet.getDouble("running_cal");
+			double swimming = resultSet.getDouble("swimming_cal");
+			double walking = resultSet.getDouble("walking_cal");
+			double cycling = resultSet.getDouble("cycling_cal");
+			double aerobics = resultSet.getDouble("aerobics_cal");
+			double total = resultSet.getDouble("total_cal");
+			
+			populateResultMap(resultMap, date, "date");
+			populateResultMap(resultMap, weight, "weight");
+			populateResultMap(resultMap, running, "running");
+			populateResultMap(resultMap, swimming, "swimming");
+			populateResultMap(resultMap, walking, "walking");
+			populateResultMap(resultMap, cycling, "cycling");
+			populateResultMap(resultMap, aerobics, "aerobics");
+			populateResultMap(resultMap, total, "total");
 		}
+		
 		this.close();
 		return resultMap;
+	}
+
+	private void populateResultMap(Map<String, List<Object>> resultMap, Object measure, String measureKey) {
+		if(!resultMap.containsKey(measureKey)){
+			List<Object> measureList = new ArrayList<>();
+			measureList.add(measure);
+			resultMap.put(measureKey, measureList);
+		}else{
+			resultMap.get(measureKey).add(measure);
+		}
 	}
 }

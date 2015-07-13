@@ -18,6 +18,10 @@ body {
 	width: 94%;
 }
 
+.spacer {
+    height: 20px;
+}
+
 .middle {
 	display: table-cell;
 	vertical-align: middle;
