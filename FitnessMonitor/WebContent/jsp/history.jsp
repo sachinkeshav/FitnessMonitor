@@ -16,113 +16,14 @@
 	type="text/javascript"></script>
 
 <script type="text/javascript">
-	var running = "${running}".replace("[", "").replace("]", "").split(", ");
-	var walking = "${walking}".replace("[", "").replace("]", "").split(", ");
-	var swimming = "${swimming}".replace("[", "").replace("]", "").split(", ");
-	var cycling = "${cycling}".replace("[", "").replace("]", "").split(", ");
-	var aerobics = "${aerobics}".replace("[", "").replace("]", "").split(", ");
-	var total = "${total}".replace("[", "").replace("]", "").split(", ");
 	var date = "${date}".replace("[", "").replace("]", "").split(", ");
 	var weight = "${weight}".replace("[", "").replace("]", "").split(", ");
-
-	$(function() {
-		$('#testId2').highcharts({
-
-			title : {
-				text : 'Calories Burnt Over One Week',
-				x : -20
-			//center
-			},
-			subtitle : {
-				text : 'Source: Mustard Flower Fitness Tracker',
-				x : -20
-			},
-			xAxis : {
-				categories : date
-			},
-			yAxis : {
-				title : {
-					text : 'Calories'
-				},
-				plotLines : [ {
-					value : 0,
-					width : 1,
-					color : '#808080'
-				} ]
-			},
-			tooltip : {
-				valueSuffix : ' Cal'
-			},
-			legend : {
-				layout : 'vertical',
-				align : 'right',
-				verticalAlign : 'middle',
-				borderWidth : 0
-			},
-			series : [ {
-				name : 'Running',
-				data : JSON.parse("[" + running + "]")
-
-			}, {
-				name : 'Cycling',
-				data : JSON.parse("[" + cycling + "]")
-			}, {
-				name : 'Swimming',
-				data : JSON.parse("[" + swimming + "]")
-			}, {
-				name : 'Walking',
-				data : JSON.parse("[" + walking + "]")
-			}, {
-				name : 'Yoga/Aerobics',
-				data : JSON.parse("[" + aerobics + "]")
-			}, {
-				name : 'Total',
-				data : JSON.parse("[" + total + "]")
-			} ]
-		});
-	});
-
-	$(function() {
-		$('#testId2').highcharts({
-
-			title : {
-				text : 'Weight Progres Over One Week',
-				x : -20
-			//center
-			},
-			subtitle : {
-				text : 'Source: Mustard Flower Fitness Tracker',
-				x : -20
-			},
-			xAxis : {
-				categories : date
-			},
-			yAxis : {
-				title : {
-					text : 'Weight'
-				},
-				plotLines : [ {
-					value : 0,
-					width : 1,
-					color : '#808080'
-				} ]
-			},
-			tooltip : {
-				valueSuffix : ' Pound'
-			},
-			legend : {
-				layout : 'vertical',
-				align : 'right',
-				verticalAlign : 'middle',
-				borderWidth : 0
-			},
-			series : [ {
-				name : 'Weight',
-				data : JSON.parse("[" + weight + "]")
-
-			} ]
-		});
-	});
+	var treadMill = "${treadMill}".replace("[", "").replace("]", "").split(", ");
+	var dumbBells = "${dumbBells}".replace("[", "").replace("]", "").split(", ");
+	var cycling = "${cycling}".replace("[", "").replace("]", "").split(", ");
+	var pullUp = "${pullUp}".replace("[", "").replace("]", "").split(", ");
+	var benchPress = "${benchPress}".replace("[", "").replace("]", "").split(", ");
+	var total = "${total}".replace("[", "").replace("]", "").split(", ");
 
 	$(function() {
 		var calorieChart;
@@ -164,21 +65,21 @@
 					borderWidth : 0
 				},
 				series : [ {
-					name : 'Running',
-					data : JSON.parse("[" + running + "]")
+					name : 'Tread Mill',
+					data : JSON.parse("[" + treadMill + "]")
 
+				}, {
+					name : 'Dumb Bells',
+					data : JSON.parse("[" + dumbBells + "]")
 				}, {
 					name : 'Cycling',
 					data : JSON.parse("[" + cycling + "]")
 				}, {
-					name : 'Swimming',
-					data : JSON.parse("[" + swimming + "]")
+					name : 'Pullups',
+					data : JSON.parse("[" + pullUp + "]")
 				}, {
-					name : 'Walking',
-					data : JSON.parse("[" + walking + "]")
-				}, {
-					name : 'Yoga/Aerobics',
-					data : JSON.parse("[" + aerobics + "]")
+					name : 'Bench Press',
+					data : JSON.parse("[" + benchPress + "]")
 				}, {
 					name : 'Total',
 					data : JSON.parse("[" + total + "]")
@@ -239,16 +140,17 @@
 <title>Fitness Monitor System</title>
 </head>
 <body>
-	<h1>Progress Report</h1>
+	<h1>P</h1>
 	<div class="outer">
 		<div class="middle">
+			<h1>Progress Report</h1>
 			<div id="calorieBurnt"
 				style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 1cm"></div>
 
-			<div class="spacer"></div>
+			<div class="spacer">Test</div>
 
 			<div id="weightProgress"
-				style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+				style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 1cm"></div>
 		</div>
 	</div>
 </body>
