@@ -140,10 +140,9 @@
 <title>Fitness Monitor System</title>
 </head>
 <body>
-	<h1>P</h1>
 	<div class="outer">
 		<div class="middle">
-			<h1>Progress Report</h1>
+			<h1 style="margin-top: 3cm">Progress Report</h1>
 			<div id="calorieBurnt"
 				style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 1cm"></div>
 
