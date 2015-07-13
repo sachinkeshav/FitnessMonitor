@@ -51,6 +51,7 @@ eclipse
 *.iws
 .idea/
 .settings/
+.metadata/
 
 # default HSQL database files for production mode #
 ###################################################
