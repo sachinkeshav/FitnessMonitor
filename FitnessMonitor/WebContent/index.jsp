@@ -17,9 +17,12 @@
 					<h1>Fitness Monitor System</h1>
 				</div>
 				<div>
-					<a id="activity"
+					<a id="profile" class="profile"
+						href="${pageContext.request.contextPath}/profile">+ My Profile</a>
+					<br>
+					<a id="activity" class="activity"
 						href="${pageContext.request.contextPath}/newActivity">+ Add
-						activity</a> <br> <a id="activity"
+						activity</a> <br> <a id="history" class="history"
 						href="${pageContext.request.contextPath}/showHistory">+ Show
 						History</a>
 				</div>

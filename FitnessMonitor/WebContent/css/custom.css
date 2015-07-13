@@ -6,7 +6,7 @@ body {
 	margin: -100px 0 0 40px;
 }
 
-#activity {
+.activity, .profile, .history {
 	font-size: 130%;
 	text-decoration: none;
 }
@@ -49,4 +49,25 @@ body {
 	height: 26px;
 	margin-top: 16px;
 	width: 62px;
+}
+
+.profile-separator {
+	margin-bottom: 10px;
+}
+
+.profile-dob {
+	margin-left: 77px;
+}
+
+.profile-gender {
+	margin-left: 47px;
+}
+
+.profile-height {
+	margin-left: 47px;
+}
+
+.name-separator {
+	font-size: 10pt;
+	margin-right: 10px;
 }
