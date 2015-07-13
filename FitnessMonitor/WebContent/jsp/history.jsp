@@ -147,7 +147,7 @@
 			<div id="calorieBurnt"
 				style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 1cm"></div>
 
-			<div class="spacer">Test</div>
+			<div class="spacer"></div>
 
 			<div id="weightProgress"
 				style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 1cm"></div>
