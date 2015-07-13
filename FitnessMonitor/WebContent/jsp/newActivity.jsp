@@ -93,16 +93,19 @@
 			$('#weight').show();
 			$('#repetition').show();
 			$('#measuType').hide();
+			$('#level').hide();
 			break;
 		case 'Bench-press':
 			$('#weight').show();
 			$('#repetition').show();
 			$('#measuType').hide();
+			$('#level').hide();
 			break;
 		case 'Pull-up':
 			$('#weight').hide();
 			$('#repetition').show();
 			$('#measuType').hide();
+			$('#level').hide();
 			break;
 		default:
 			$('#level').show();

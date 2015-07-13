@@ -48,7 +48,7 @@ public class MyProfile extends HttpServlet {
 			String weight = request.getParameter("weight");
 			String query = "update profile set FirstName=\"" + firstName + "\", LastName=\"" + lastName
 					+ "\", Gender=\"" + gender + "\", Dob=\"" + dob + "\", Height=\"" + height + "\", Weight=\""
-					+ weight + "\" where Id='1'";
+					+ Double.parseDouble(weight) + "\" where Id='1'";
 			try {
 				conn.executeUpdate(query);
 			} catch (SQLException e) {

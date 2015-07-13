@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.mustard.fitnessmonitor.models.JdbcMainTest;
+import org.mustard.fitnessmonitor.models.MustardSupport;
 
 /**
  * Servlet implementation class ShowHistory
@@ -38,21 +38,24 @@ public class ShowHistory extends HttpServlet {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at:
 		// ").append(request.getContextPath());
-		JdbcMainTest test = new JdbcMainTest();
+		
+		MustardSupport support = new MustardSupport();
+
 		Map<String, List<Object>> result = null;
 		try {
-			result = test.fetchData();
+			result = support.fetchAllData();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		request.setAttribute("date", result.get("date"));
 		request.setAttribute("weight", result.get("weight"));
 		request.setAttribute("running", result.get("running"));
 		request.setAttribute("walking", result.get("walking"));
-		request.setAttribute("swimming", result.get("swimming"));
 		request.setAttribute("cycling", result.get("cycling"));
-		request.setAttribute("aerobics", result.get("aerobics"));
+		request.setAttribute("swimming", result.get("swimming"));
+		request.setAttribute("yoga", result.get("yoga"));
 		request.setAttribute("total", result.get("total"));
-		request.setAttribute("date", result.get("date"));
+		
 		request.getRequestDispatcher("/jsp/history.jsp").forward(request, response);
 	}
 

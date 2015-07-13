@@ -1,4 +1,4 @@
-package org.mustard.fitnessmonitor.models;
+/*package org.mustard.fitnessmonitor.models;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -14,11 +14,11 @@ public class MustardMain {
 			physicals[0] = new Running(34, 23, 3, 0);
 			physicals[1] = new Cycling(56, 23, 2, 3);
 			physicals[2] = new Swimming(56, 34);
-			/*
+			
 			 * for (Physical ps : physicals) { totalCalories +=
 			 * ps.calculateCalories(); System.out.println(ps.activityType() +
 			 * " " + ps.calculateCalories()); }
-			 */
+			 
 		} catch (NegativeValueException e) {
 			System.err.println(e.getMessage());
 		}
@@ -56,8 +56,9 @@ public class MustardMain {
 			res = ans.nextLine();
 		} while (res.equalsIgnoreCase("y"));
 
-		support.storeData(totalCalories);
+		//support.storeData(totalCalories);
 		support.showData();
 	}
 
 }
+*/
