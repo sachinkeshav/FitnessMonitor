@@ -20,9 +20,9 @@ public class MustardSupport {
 		JdbcMain jdbcMain = new JdbcMain();
 		Statement stmt = jdbcMain.connection();
 		String sql;
-		sql = "SELECT * FROM table_fitness ORDER BY date  DESC LIMIT 7";
+		sql = "SELECT * FROM (SELECT * FROM table_fitness ORDER BY date DESC LIMIT 7) var ORDER BY date";
 		ResultSet resultSet = stmt.executeQuery(sql);
-
+		
 		Map<String, List<Object>> resultMap = new HashMap<>();
 
 		while (resultSet.next()) {
