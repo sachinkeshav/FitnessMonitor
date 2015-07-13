@@ -2,6 +2,7 @@ package org.mustard.fitnessmonitor.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.mustard.fitnessmonitor.models.JdbcMainTest;
+import org.mustard.fitnessmonitor.models.MustardSupport;
 
 /**
  * Servlet implementation class ShowHistory
@@ -37,12 +38,22 @@ public class ShowHistory extends HttpServlet {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at:
 		// ").append(request.getContextPath());
-		JdbcMainTest test = new JdbcMainTest();
+		MustardSupport support = new MustardSupport();
+
+		Map<String, List<Object>> result = null;
 		try {
-			Map<String, Map<String, Double>> result = test.fetchData();
+			result = support.fetchAllData();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		request.setAttribute("date", result.get("date"));
+		request.setAttribute("weight", result.get("weight"));
+		request.setAttribute("running", result.get("running"));
+		request.setAttribute("walking", result.get("walking"));
+		request.setAttribute("cycling", result.get("cycling"));
+		request.setAttribute("swimming", result.get("swimming"));
+		request.setAttribute("yoga", result.get("yoga"));
+		request.setAttribute("total", result.get("total"));
 		request.getRequestDispatcher("/jsp/history.jsp").forward(request, response);
 	}
 
