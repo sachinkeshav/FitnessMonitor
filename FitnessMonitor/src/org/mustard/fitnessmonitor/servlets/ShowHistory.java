@@ -46,13 +46,15 @@ public class ShowHistory extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		System.out.println(result);
+
 		request.setAttribute("date", result.get("date"));
 		request.setAttribute("weight", result.get("weight"));
-		request.setAttribute("running", result.get("running"));
-		request.setAttribute("walking", result.get("walking"));
+		request.setAttribute("treadMill", result.get("treadMill"));
+		request.setAttribute("dumbBells", result.get("dumbBells"));
 		request.setAttribute("cycling", result.get("cycling"));
-		request.setAttribute("swimming", result.get("swimming"));
-		request.setAttribute("yoga", result.get("yoga"));
+		request.setAttribute("pullUp", result.get("pullUp"));
+		request.setAttribute("benchPress", result.get("benchPress"));
 		request.setAttribute("total", result.get("total"));
 		request.getRequestDispatcher("/jsp/history.jsp").forward(request, response);
 	}

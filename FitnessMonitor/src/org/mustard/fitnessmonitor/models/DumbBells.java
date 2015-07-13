@@ -1,20 +1,19 @@
 package org.mustard.fitnessmonitor.models;
 
-public class Walking extends Physical {
-	public Walking() {
+public class DumbBells extends Physical {
+	public DumbBells() {
 	}
 
 	@Override
 	public ActivityType activityType() {
-		return ActivityType.WALKING;
+		return ActivityType.DUMBBELLS;
 	}
 
 	@Override
 	public double calculateCalories() {
-		if (super.getTime() == 0) {
-			return super.calculateCalories() * super.getLevel() / 2 * 0.57;
-		} else
-			return super.weight * super.getLevel() / 2 * 0.3 * super.getTime();
+
+		return super.weight * (this.getDumbbellWeight() / this.getRepetition()) * 0.2 / 2 * 0.57;
+
 	}
 
 }

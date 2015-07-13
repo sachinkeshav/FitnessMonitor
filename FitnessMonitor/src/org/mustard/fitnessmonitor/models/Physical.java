@@ -5,6 +5,33 @@ public abstract class Physical {
 	public static double weight;
 	private double time;
 	private int level;
+	double dumbbellWeight;
+	int repetition;
+	double benchPressWeight;
+
+	public double getBenchPressWeight() {
+		return benchPressWeight;
+	}
+
+	public void setBenchPressWeight(double benchPressWeight) {
+		this.benchPressWeight = benchPressWeight;
+	}
+
+	public int getRepetition() {
+		return repetition;
+	}
+
+	public void setRepetition(int repetition) {
+		this.repetition = repetition;
+	}
+
+	public double getDumbbellWeight() {
+		return dumbbellWeight;
+	}
+
+	public void setDumbbellWeight(double dumbbellWeight) {
+		this.dumbbellWeight = dumbbellWeight;
+	}
 
 	public Physical() {
 
