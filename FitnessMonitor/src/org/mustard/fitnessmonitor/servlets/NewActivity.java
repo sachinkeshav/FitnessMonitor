@@ -32,11 +32,11 @@ public class NewActivity extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<String> activityList = new ArrayList<String>();
-		activityList.add("Walking");
-		activityList.add("Running");
-		activityList.add("Cycling");
-		activityList.add("Swimming");
-		activityList.add("Yoga/Aerobics");
+		activityList.add("Treadmill");
+		activityList.add("Excercise Bike");
+		activityList.add("Dumbbells");
+		activityList.add("Pull-up");
+		activityList.add("Bench-press");
 		request.setAttribute("activityList", activityList);
 		getServletContext().getRequestDispatcher("/jsp/newActivity.jsp").forward(request, response);
 	}

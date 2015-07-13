@@ -15,7 +15,7 @@ body {
 	display: table;
 	position: absolute;
 	height: 100%;
-	width: 100%;
+	width: 94%;
 }
 
 .middle {
@@ -70,4 +70,8 @@ body {
 .name-separator {
 	font-size: 10pt;
 	margin-right: 10px;
+}
+
+.activity-weight, .activity-repetition {
+	display: none;
 }

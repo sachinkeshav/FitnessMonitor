@@ -54,6 +54,7 @@ public class MyProfile extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			request.setAttribute("updatedProfile", true);
 		}
 		Profile profile = new Profile();
 		String query = "select * from profile";

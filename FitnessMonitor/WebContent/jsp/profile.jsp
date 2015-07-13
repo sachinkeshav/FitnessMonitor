@@ -58,5 +58,8 @@
 	$('#cancel').click(function() {
 		window.location.href = "${pageContext.request.contextPath}/";
 	});
+	var updated = "${updatedProfile}";
+	if (updated == "true")
+		alert("Successfully updated.");
 </script>
 </html>

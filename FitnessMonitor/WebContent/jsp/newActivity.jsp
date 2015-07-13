@@ -34,9 +34,17 @@
 							value="medium"> Medium <input type="radio" name="level"
 							value="high"> High
 					</div>
-					<div class="measurement-type">
-						<label for="type">+ Choose type: </label> <select name="measType"
-							id="measType">
+					<div id="weight" class="level activity-weight">
+						+ Weight: <input type="text" name="weight"
+							placeholder="Weight in lbs" />
+					</div>
+					<div id="repetition" class="level activity-repetition">
+						+ Repetitions: <input type="text" name="repetition"
+							placeholder="No. of repetitions" />
+					</div>
+					<div id="measuType" class="measurement-type">
+						<label for="type">+ Distance/Time: </label> <select
+							name="measType" id="measType">
 							<option>Choose type</option>
 							<option value="distance">Distance</option>
 							<option value="time">Time</option>
@@ -81,11 +89,26 @@
 	$('#newActivity').change(function() {
 		selection = $(this).val();
 		switch (selection) {
-		case 'Swimming':
-			$('#level').hide();
+		case 'Dumbbells':
+			$('#weight').show();
+			$('#repetition').show();
+			$('#measuType').hide();
+			break;
+		case 'Bench-press':
+			$('#weight').show();
+			$('#repetition').show();
+			$('#measuType').hide();
+			break;
+		case 'Pull-up':
+			$('#weight').hide();
+			$('#repetition').show();
+			$('#measuType').hide();
 			break;
 		default:
 			$('#level').show();
+			$('#measuType').show();
+			$('#weight').hide();
+			$('#repetition').hide();
 			break;
 		}
 	});
