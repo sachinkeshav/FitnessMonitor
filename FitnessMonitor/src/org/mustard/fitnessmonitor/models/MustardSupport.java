@@ -9,20 +9,21 @@ import java.util.List;
 import java.util.Map;
 
 public class MustardSupport {
-	double treadMillDb;
-	double dumbBellsDb;
-	double cyclingDb;
-	double pullUpDb;
-	double benchPressDb;
-	String dateDb;
 
+	/**
+	 * perform mapping of all indivdual type of calories burnt over last seven
+	 * days in a list and stored in map
+	 * 
+	 * @return map containing list
+	 * @throws SQLException
+	 */
 	public Map<String, List<Object>> fetchAllData() throws SQLException {
 		JdbcMain jdbcMain = new JdbcMain();
 		Statement stmt = jdbcMain.connection();
 		String sql;
 		sql = "SELECT * FROM (SELECT * FROM table_fitness ORDER BY date DESC LIMIT 7) var ORDER BY date";
 		ResultSet resultSet = stmt.executeQuery(sql);
-		
+
 		Map<String, List<Object>> resultMap = new HashMap<>();
 
 		while (resultSet.next()) {
@@ -59,23 +60,38 @@ public class MustardSupport {
 		}
 	}
 
+	/**
+	 * retreives weight from profile table
+	 * 
+	 * @return weight
+	 * @throws SQLException
+	 */
 	public double fetchWeight() throws SQLException {
 		double weight = 0;
 		JdbcMain jdbcMain = new JdbcMain();
 		Statement stmt = jdbcMain.connection();
 		String sql = "SELECT * FROM profile";
 		ResultSet resultSet = stmt.executeQuery(sql);
-		while(resultSet.next()){
+		while (resultSet.next()) {
 			weight = resultSet.getDouble("Weight");
 		}
+		jdbcMain.close();
 		return weight;
 	}
 
+	/**
+	 * 
+	 * @param currentDate
+	 * @return all the caloriesburnt placed individually in map
+	 * @throws SQLException
+	 */
 	public HashMap<String, Double> fetchData(String currentDate) throws SQLException {
 		HashMap<String, Double> prevoiusValueMap = new HashMap<String, Double>();
 		JdbcMain jdbcMain = new JdbcMain();
 		Statement stmt = jdbcMain.connection();
+
 		String sql = "SELECT * FROM table_fitness where date = '" + currentDate + "'";
+
 		ResultSet resultSet = stmt.executeQuery(sql);
 		if (resultSet.next()) {
 			prevoiusValueMap.put("id", new Double(resultSet.getInt("id")));
@@ -85,43 +101,52 @@ public class MustardSupport {
 			prevoiusValueMap.put("pullUp", resultSet.getDouble("pullUp"));
 			prevoiusValueMap.put("benchPress", resultSet.getDouble("benchPress"));
 		}
-		System.out.println(prevoiusValueMap);
 		return prevoiusValueMap;
 	}
 
+	/**
+	 * performs sql data insertion and update
+	 * 
+	 * @param map
+	 *            with activity and caloriesBurnt
+	 * @throws SQLException
+	 */
 	public void storeData(HashMap<String, Double> map) throws SQLException {
 		double totalCaloriesBurnt = 0;
 		java.util.Date dt = new java.util.Date();
 		java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
 		String currentTime = sdf.format(dt);
+
 		HashMap<String, Double> previousMap = new MustardSupport().fetchData(currentTime);
+
 		JdbcMain jdbcMain = new JdbcMain();
 		Statement stmt = jdbcMain.connection();
-		if (!previousMap.isEmpty()) {
-			treadMillDb = previousMap.get("treadMill") + map.get("treadMill");
-			dumbBellsDb = previousMap.get("dumbBells") + map.get("dumbBells");
-			cyclingDb = previousMap.get("cycling") + map.get("cycling");
-			pullUpDb = previousMap.get("pullUp") + map.get("pullUp");
-			benchPressDb = previousMap.get("benchPress") + map.get("benchPress");
-			totalCaloriesBurnt = treadMillDb + dumbBellsDb + cyclingDb + pullUpDb + benchPressDb;
-			String updateQuery = " UPDATE table_fitness set id='" + previousMap.get("id").intValue() + "',weight='"
-					+ Physical.weight + "',treadMill='" + treadMillDb + "'," + "dumbBells='" + dumbBellsDb + "',cycling='"
-					+ cyclingDb + "'" + ",pullUP='" + pullUpDb + "',benchPress='" + benchPressDb + "',totalCalories='"
-					+ totalCaloriesBurnt + "' where date='" + currentTime + "'";
 
-			System.out.println(updateQuery);
+		if (!previousMap.isEmpty()) {
+			double treadMillDb = previousMap.get("treadMill") + map.get("treadMill");
+			double dumbBellsDb = previousMap.get("dumbBells") + map.get("dumbBells");
+			double cyclingDb = previousMap.get("cycling") + map.get("cycling");
+			double pullUpDb = previousMap.get("pullUp") + map.get("pullUp");
+			double benchPressDb = previousMap.get("benchPress") + map.get("benchPress");
+			totalCaloriesBurnt = treadMillDb + dumbBellsDb + cyclingDb + pullUpDb + benchPressDb;
+
+			String updateQuery = " UPDATE table_fitness set id='" + previousMap.get("id").intValue() + "',weight='"
+					+ Physical.weight + "',treadMill='" + treadMillDb + "'," + "dumbBells='" + dumbBellsDb
+					+ "',cycling='" + cyclingDb + "'" + ",pullUP='" + pullUpDb + "',benchPress='" + benchPressDb
+					+ "',totalCalories='" + totalCaloriesBurnt + "' where date='" + currentTime + "'";
+
 			stmt.executeUpdate(updateQuery);
 		} else {
 			for (Double caloriesBurnt : map.values()) {
 				totalCaloriesBurnt += caloriesBurnt;
 			}
-			System.out.println("total calories Burnt" + totalCaloriesBurnt);
+
 			String insertQuery = "INSERT INTO table_fitness(weight,treadMill,dumbBells,cycling,pullUp,benchPress,date,totalCalories) "
-					+ "VALUES ('" + Physical.weight + "','" + map.get("treadMill") + "','" + map.get("dumbBells") + "','"
-					+ map.get("cycling") + "','" + map.get("pullUp") + "','" + map.get("benchPress") + "','" + currentTime
-					+ "','" + totalCaloriesBurnt + "')";
-			System.out.println(insertQuery);
-			stmt.executeUpdate(insertQuery); // add for each new Days
+					+ "VALUES ('" + Physical.weight + "','" + map.get("treadMill") + "','" + map.get("dumbBells")
+					+ "','" + map.get("cycling") + "','" + map.get("pullUp") + "','" + map.get("benchPress") + "','"
+					+ currentTime + "','" + totalCaloriesBurnt + "')";
+
+			stmt.executeUpdate(insertQuery);
 		}
 		jdbcMain.close();
 	}

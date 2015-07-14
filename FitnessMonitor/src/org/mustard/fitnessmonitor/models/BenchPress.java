@@ -7,7 +7,7 @@ public class BenchPress extends Physical {
 
 	@Override
 	public ActivityType activityType() {
-		return null;
+		return ActivityType.BENCHPRESS;
 	}
 
 	@Override

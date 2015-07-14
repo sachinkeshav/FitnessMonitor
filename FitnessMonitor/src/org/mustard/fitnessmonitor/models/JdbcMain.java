@@ -4,15 +4,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+/**
+ * Jdbc connection for complete project
+ * @author dheeraj
+ *
+ */
 public class JdbcMain {
 	Connection conn = null;
 	Statement stmt = null;
-	// JDBC driver name and database URL
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://localhost/MustardDB";
 
-	// Database credentials
 	static final String USER = "root";
 	static final String PASS = "";
 

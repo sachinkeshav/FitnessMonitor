@@ -1,6 +1,7 @@
 package org.mustard.fitnessmonitor.models;
 
 public class TreadMill extends Physical {
+
 	public TreadMill() {
 	}
 

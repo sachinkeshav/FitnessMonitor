@@ -35,19 +35,14 @@ public class ShowHistory extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at:
-		// ").append(request.getContextPath());
-		
 		MustardSupport support = new MustardSupport();
-
 		Map<String, List<Object>> result = null;
+		
 		try {
 			result = support.fetchAllData();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println(result);
 
 		request.setAttribute("date", result.get("date"));
 		request.setAttribute("weight", result.get("weight"));

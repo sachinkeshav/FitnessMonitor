@@ -30,7 +30,6 @@ public class AddActivity extends HttpServlet {
 	 */
 	public AddActivity() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -63,24 +62,19 @@ public class AddActivity extends HttpServlet {
 		String actWeight = request.getParameter("weight");
 		String repetition = request.getParameter("repetition");
 
-		try {
-			double weight = ms.fetchWeight();
-		} catch (SQLException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
 		HashMap<String, Integer> levelMap = new HashMap<String, Integer>();
 		levelMap.put("low", 1);
 		levelMap.put("medium", 2);
 		levelMap.put("high", 3);
+
 		try {
 			Physical.weight = ms.fetchWeight();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
-		if (activity.equalsIgnoreCase("treadMill")) {
+		switch (activity) {
+		case "Treadmill":
 			if (measType.equalsIgnoreCase("Distance")) {
 				physicals[0].setDistance(Double.parseDouble(specifiedMiles));
 			} else {
@@ -88,18 +82,16 @@ public class AddActivity extends HttpServlet {
 			}
 			physicals[0].setLevel(levelMap.get(level));
 			map.put("treadMill", physicals[0].calculateCalories());
-		} else if (activity.equalsIgnoreCase("dumbBells")) {
+			break;
+		case "Dumbbells":
 			physicals[1].setRepetition(Integer.parseInt(repetition));
 			physicals[1].setDumbbellWeight(Double.parseDouble(actWeight));
 			map.put("dumbBells", physicals[1].calculateCalories());
-		} else if (activity.equalsIgnoreCase("Pull-up"))
-
-		{
+			break;
+		case "Pull-up":
 			physicals[2].setRepetition(Integer.parseInt(repetition));
 			map.put("pullUp", physicals[2].calculateCalories());
-		} else if (activity.equalsIgnoreCase("Excercise Bike"))
-
-		{
+		case "Excercise Bike":
 			if (measType.equalsIgnoreCase("Distance")) {
 				physicals[3].setDistance(Double.parseDouble(specifiedMiles));
 			} else {
@@ -107,36 +99,23 @@ public class AddActivity extends HttpServlet {
 			}
 			physicals[3].setLevel(levelMap.get(level));
 			map.put("cycling", physicals[3].calculateCalories());
-		} else if (activity.equalsIgnoreCase("Bench-press"))
-
-		{
-
+			break;
+		case "Bench-press":
 			physicals[4].setRepetition(Integer.parseInt(repetition));
 			physicals[4].setBenchPressWeight(Double.parseDouble(actWeight));
 			map.put("benchPress", physicals[4].calculateCalories());
-		} else {
+			break;
+		default:
 		}
-		System.out.println(map);
-		// ms.showData();
-		try
 
-		{
+		try {
 			ms.storeData(map);
-			// ms.showData();
-		} catch (
-
-		SQLException e)
-
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
