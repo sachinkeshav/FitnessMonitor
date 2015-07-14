@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 /**
  * Jdbc connection for complete project
+ * 
  * @author dheeraj
  *
  */
@@ -42,8 +44,7 @@ public class JdbcMain {
 		}
 		try {
 			if (conn != null)
-				System.out.println("Closing onnection");
-			conn.close();
+				conn.close();
 		} catch (SQLException se) {
 			se.printStackTrace();
 		}
