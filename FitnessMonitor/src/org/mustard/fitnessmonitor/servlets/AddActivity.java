@@ -91,6 +91,7 @@ public class AddActivity extends HttpServlet {
 		case "Pull-up":
 			physicals[2].setRepetition(Integer.parseInt(repetition));
 			map.put("pullUp", physicals[2].calculateCalories());
+			break;
 		case "Excercise Bike":
 			if (measType.equalsIgnoreCase("Distance")) {
 				physicals[3].setDistance(Double.parseDouble(specifiedMiles));
@@ -106,7 +107,7 @@ public class AddActivity extends HttpServlet {
 			map.put("benchPress", physicals[4].calculateCalories());
 			break;
 		default:
-		}
+			}
 
 		try {
 			ms.storeData(map);
