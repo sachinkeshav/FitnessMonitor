@@ -39,7 +39,7 @@
 				//center
 				},
 				subtitle : {
-					text : 'Source: Mustard Flower Fitness Tracker',
+					text : 'Source: Fitness Monitor',
 					x : -20
 				},
 				xAxis : {
@@ -97,12 +97,12 @@
 					type : 'line'
 				},
 				title : {
-					text : 'Weight Progres Over One Week',
+					text : 'Weight Progress Over One Week',
 					x : -20
 				//center
 				},
 				subtitle : {
-					text : 'Source: Mustard Flower Fitness Tracker',
+					text : 'Source: Fitness Monitor',
 					x : -20
 				},
 				xAxis : {
