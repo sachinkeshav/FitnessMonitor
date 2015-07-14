@@ -22,7 +22,7 @@
 				<div>
 					<form action="profile" method="POST">
 						<div class="profile-separator">
-							+ Name: <span class="name-separator">First:</span> <input
+							+ Name:<span class="name-separator">First:</span> <input
 								type="text" name="firstName"
 								value="<c:out value="${profile.firstName}"></c:out>"> <span
 								class="name-separator">Last:</span> <input type="text"
@@ -30,20 +30,24 @@
 								value="<c:out value="${profile.lastName}"></c:out>">
 						</div>
 						<div class="profile-separator">
-							+ Dob: <input class="profile-dob" type="text" name="dob"
-								value="<c:out value="${profile.dob}"></c:out>">
+							+ Dob:<input class="profile-dob" type="text" name="dob"
+								value="<c:out value="${profile.dob}"></c:out>"><span
+								class="name-separator"> YYYY-MM-DD</span>
 						</div>
 						<div class="profile-separator">
-							+ Gender: <input class="profile-gender" type="text" name="gender"
-								value="<c:out value="${profile.gender}"></c:out>">
+							+ Gender:<input class="profile-gender" type="text" name="gender"
+								value="<c:out value="${profile.gender}"></c:out>"><span
+								class="name-separator"> M/F</span>
 						</div>
 						<div class="profile-separator">
-							+ Height: <input class="profile-height" type="text" name="height"
-								value="<c:out value="${profile.height}"></c:out>">
+							+ Height:<input class="profile-height" type="text" name="height"
+								value="<c:out value="${profile.height}"></c:out>"><span
+								class="name-separator"> ft'in''</span>
 						</div>
 						<div class="profile-separator">
-							+ Weight: <input class="profile-height" type="text" name="weight"
-								value="<c:out value="${profile.weight}"></c:out>">
+							+ Weight:<input class="profile-height" type="text" name="weight"
+								value="<c:out value="${profile.weight}"></c:out>"><span
+								class="name-separator"> pounds</span>
 						</div>
 						<input class="submitButton" type="submit" value="Submit">
 						<input id="cancel" class="submitButton" type="button"

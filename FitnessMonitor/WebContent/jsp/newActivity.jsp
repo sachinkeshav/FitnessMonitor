@@ -57,7 +57,7 @@
 						<div id="exerciceTypeTime" class="sub-measurement-type"
 							style="display: none;">
 							<label for="specify">+ Time : </label> <input type="text"
-								name="specifiedTime" placeholder="Specify time" />
+								name="specifiedTime" placeholder="Specify minutes" />
 						</div>
 					</div>
 					<input class="submitButton" type="submit" value="Submit"> <input
