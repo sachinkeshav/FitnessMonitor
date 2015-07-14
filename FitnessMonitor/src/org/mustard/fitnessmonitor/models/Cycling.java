@@ -15,7 +15,7 @@ public class Cycling extends Physical {
 		if (super.getTime() == 0) {
 			return super.calculateCalories() * super.getLevel() / 2 * 0.72;
 		} else
-			return super.weight * super.getLevel() / 2 * 0.57 * super.getTime();
+			return super.weight * super.getLevel()* 0.57 * (super.getTime()/2);
 	}
 
 }

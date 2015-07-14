@@ -12,7 +12,7 @@ public class PullUp extends Physical {
 
 	@Override
 	public double calculateCalories() {
-		return super.weight * 0.57 * super.getRepetition();
+		return 4* super.getRepetition()*(super.weight/100);
 
 	}
 

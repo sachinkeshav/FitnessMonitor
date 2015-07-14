@@ -15,7 +15,7 @@ public class TreadMill extends Physical {
 		if (super.getTime() == 0) {
 			return super.calculateCalories() * super.getLevel() / 2 * 0.72;
 		} else
-			return super.weight * getLevel() / 2 * 0.7 * super.getTime();
+			return super.weight*0.45 * getLevel() * 0.57 * super.getTime();
 	}
 
 }
