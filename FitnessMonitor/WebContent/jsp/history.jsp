@@ -142,7 +142,10 @@
 <body>
 	<div class="outer">
 		<div class="middle">
-			<h1 style="margin-top: 3cm">Progress Report</h1>
+			<h1 style="margin-top: 3cm; cursor: pointer"
+				onclick="window.location='${pageContext.request.contextPath}/'">Fitness
+				Monitor System</h1>
+			<h2 style="margin-top: 1cm">Progress Report</h2>
 			<div id="calorieBurnt"
 				style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 1cm"></div>
 
