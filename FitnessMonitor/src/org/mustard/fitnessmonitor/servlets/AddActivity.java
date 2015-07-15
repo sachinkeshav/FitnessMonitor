@@ -53,7 +53,6 @@ public class AddActivity extends HttpServlet {
 		map.put("pullUp", 0.0);
 		map.put("benchPress", 0.0);
 
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String activity = request.getParameter("newActivity");
 		String level = request.getParameter("level");
 		String measType = request.getParameter("measType");
@@ -107,13 +106,15 @@ public class AddActivity extends HttpServlet {
 			map.put("benchPress", physicals[4].calculateCalories());
 			break;
 		default:
-			}
+		}
 
 		try {
 			ms.storeData(map);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		request.setAttribute("savedActivity", true);
+		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 
 	}
 

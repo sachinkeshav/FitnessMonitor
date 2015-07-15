@@ -19,8 +19,7 @@
 				<div>
 					<a id="profile" class="profile"
 						href="${pageContext.request.contextPath}/profile">+ My Profile</a>
-					<br>
-					<a id="activity" class="activity"
+					<br> <a id="activity" class="activity"
 						href="${pageContext.request.contextPath}/newActivity">+ Add
 						activity</a> <br> <a id="history" class="history"
 						href="${pageContext.request.contextPath}/showHistory">+ Show
@@ -30,4 +29,9 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	var updated = "${savedActivity}";
+	if (updated == "true")
+		alert("Activity successfully updated.");
+</script>
 </html>
