@@ -16,6 +16,9 @@
 	<form action="addActivity" method="POST">
 		<div class="outer">
 			<div class="middle">
+				<h1 style="margin-top: 3cm; cursor: pointer"
+					onclick="window.location='${pageContext.request.contextPath}/'">Fitness
+					Monitor System</h1>
 				<div class="inner">
 					<div>
 						<h1>+ Add new activity</h1>
